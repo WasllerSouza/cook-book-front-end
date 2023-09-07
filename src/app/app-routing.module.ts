@@ -10,12 +10,43 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {
-    path: 'perfil',
+    path: '',
     data: {
       role: []
     },
     loadChildren: async () => (await import('./feature/perfil/module/perfil.module')).PerfilModule
+  },
+  {
+    path: '',
+    data: {
+      role: []
+
+    },
+    loadChildren: async () => (await import('./feature/manha/module/manha.module')).manhaModule
+
+  },
+  {
+    path: '',
+    data: {
+      role: []
+    },
+    loadChildren: async () => (await import('./feature/almoco/module/almoco.module')).AlmocoModule
+  },
+  {
+    path: '',
+    data: {
+      role: []
+    },
+    loadChildren: async () => (await import('./feature/janta/module/janta.module')).JantaModule
+  },
+  {
+    path: '',
+    data: {
+      role: []
+    },
+    loadChildren: async () => (await import('./feature/todas/module/todas.module')).TodasModule
   }
+
 
 ];
 

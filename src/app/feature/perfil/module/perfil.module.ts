@@ -1,13 +1,11 @@
 import {NgModule} from "@angular/core";
-import {CommonModule} from "@angular/common";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {PerfilComponent} from "../page/perfil.component";
+import { PerfilRoutingModule } from './perfil-routing.module';
 
 @NgModule({
   declarations: [PerfilComponent],
   imports: [
-    CommonModule,
-    BrowserAnimationsModule,
+    PerfilRoutingModule,
   ],
   exports: [PerfilComponent]
 })
