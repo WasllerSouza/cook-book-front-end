@@ -2,6 +2,34 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 @import "primeflex/primeflex";
+/*reset css*/
+body, h1, h2, p, ul, li, a {
+  margin: 0;
+  padding: 0;
+}
 
+body {
+  font-family: "Nunito", Helvetica, Arial, sans-serif;
+  color: #222222;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/*faz com que a borda tenha o pixel que tu definir e não somando com outro elemento que tu definir*/
+* {
+  box-sizing: border-box
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: var(--font-family); }
+

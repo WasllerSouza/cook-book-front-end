@@ -34,10 +34,17 @@ export class LoginComponent implements OnInit {
     this.checked = this.loginForm.value.checked;
     this.user = Object.assign({}, this.user, this.loginForm.value);
     return of({});
+
   }
 
   isLoggedIn() {
-    this._errorService.showErrors('testando erro', 'testando erro', 'testando erro', 'testando erro', 'testando erro');
+    this.login();
+    if (this.user.username === 'user' && this.user.password === '123') {
+      this._router.navigate(['home']);
+    } else {
+      this._errorService.showErrors('testando erro', 'testando erro', 'testando erro', 'testando erro', 'testando erro');
+    }
+
   }
 
 }
