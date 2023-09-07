@@ -27,4 +27,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 # cook-book-front-end
-Aplicação front end para utilização do projeto de estudos na linguagem do dotnet, esta aplicação foi modelada por mim, mas será implementada pelo @weu-souza
+Aplicação front end para utilização do projeto de estudos na linguagem do dotnet.
+
+## Autores
+| Papel                         | Nome                              | Contato                                          | -------------------------------------------------------------------
+| Dev Front                     | Wasller Luduvico Meireles Souza   | [WasllerSouza] (https://github.com/WasllerSouza)
+| Dev Front                     | Weuller Luduvico Meireles Souza   | [weu-souza] (https://github.com/weu-souza)
