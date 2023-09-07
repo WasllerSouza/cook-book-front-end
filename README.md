@@ -1,4 +1,4 @@
-# MeuLivroDeReceitas
+# cook-book-front-end
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
@@ -27,4 +27,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 # cook-book-front-end
-Aplicação front end para utilização do projeto de estudos na linguagem do dotnet
+Aplicação front end para utilização do projeto de estudos na linguagem do dotnet, esta aplicação foi modelada por mim, mas será implementada pelo @weu-souza
