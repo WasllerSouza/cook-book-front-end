@@ -1,9 +1,10 @@
 <header >
-    <div class="flex justify-content-between mx-4 my-4">
+    <div class="flex justify-content-around mx-4 my-4" >
       <div class="flex">
         <p>olá</p>
         <h3>nome</h3>
       </div>
+      <div><a routerLink="perfil"  class="text-black-alpha-80 " >Perfil <i class="pi pi-user mx-2" style="font-size: 1rem"></i></a></div>
       <a routerLink="/login" class="text-color"><i class="pi pi-sign-out text" style="font-size: 1.5rem"></i></a>
     </div>
 
@@ -19,11 +20,10 @@
 
   <div class="flex justify-content-center">
     <ul class="flex my-4">
-      <li><a routerLink="/todas" class="mx-2 bg-red-700 p-3 text-white">Todas</a></li>
-      <li><a routerLink="/manha" class="mx-2 text-color">café da manhã</a></li>
-      <li><a routerLink="/almoco" class="mx-2 text-color">Almoço</a></li>
-      <li><a routerLink="/janta" class="mx-2 text-color">Janta</a></li>
+      <li><a routerLink="todas" routerLinkActive="activ text-white font-bold" class="mx-2  hover:shadow-8 hover:text-white p-3 navegacao">Todas</a></li>
+      <li><a routerLink="manha" routerLinkActive="activ text-white font-bold" class="mx-2  hover:shadow-8  hover:text-white p-3 navegacao"> manhã</a></li>
+      <li><a routerLink="almoco" routerLinkActive="activ text-white font-bold" class="mx-2  hover:shadow-8  hover:text-white p-3 navegacao">Almoço</a></li>
+      <li><a routerLink="janta" routerLinkActive="activ text-white font-bold" class="mx-2  hover:shadow-8 hover:text-white p-3 navegacao">Janta</a></li>
     </ul>
   </div>
-
 </header>

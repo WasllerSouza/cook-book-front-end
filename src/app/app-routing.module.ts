@@ -7,45 +7,46 @@ import {RegisterComponent} from "./pages/register/register.component";
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {
-    path: '',
-    data: {
-      role: []
+    path: 'home', component: HomeComponent, children: [{
+      path: '',
+      data: {
+        role: []
+      },
+      loadChildren: async () => (await import('./feature/perfil/module/perfil.module')).PerfilModule
     },
-    loadChildren: async () => (await import('./feature/perfil/module/perfil.module')).PerfilModule
-  },
-  {
-    path: '',
-    data: {
-      role: []
+      {
+        path: '',
+        data: {
+          role: []
 
-    },
-    loadChildren: async () => (await import('./feature/manha/module/manha.module')).manhaModule
+        },
+        loadChildren: async () => (await import('./feature/manha/module/manha.module')).manhaModule
 
+      },
+      {
+        path: '',
+        data: {
+          role: []
+        },
+        loadChildren: async () => (await import('./feature/almoco/module/almoco.module')).AlmocoModule
+      },
+      {
+        path: '',
+        data: {
+          role: []
+        },
+        loadChildren: async () => (await import('./feature/janta/module/janta.module')).JantaModule
+      },
+      {
+        path: '',
+        data: {
+          role: []
+        },
+        loadChildren: async () => (await import('./feature/todas/module/todas.module')).TodasModule
+      }]
   },
-  {
-    path: '',
-    data: {
-      role: []
-    },
-    loadChildren: async () => (await import('./feature/almoco/module/almoco.module')).AlmocoModule
-  },
-  {
-    path: '',
-    data: {
-      role: []
-    },
-    loadChildren: async () => (await import('./feature/janta/module/janta.module')).JantaModule
-  },
-  {
-    path: '',
-    data: {
-      role: []
-    },
-    loadChildren: async () => (await import('./feature/todas/module/todas.module')).TodasModule
-  }
 
 
 ];
