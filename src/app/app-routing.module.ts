@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./pages/login/login.component";
 import {HomeComponent} from "./pages/home/home.component";
 import {RegisterComponent} from "./pages/register/register.component";
+import {PageErrorComponent} from "./shared/page-component/page-error/page-error.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -47,6 +48,7 @@ const routes: Routes = [
         loadChildren: async () => (await import('./feature/todas/module/todas.module')).TodasModule
       }]
   },
+  {path: '**', component: PageErrorComponent}
 
 
 ];
