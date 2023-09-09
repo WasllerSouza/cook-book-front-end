@@ -2,11 +2,8 @@
   <section id="login-card"  class="login-card">
     <p-card>
       <div class="flex flex-column">
-        <div class="text-6xl">
-          Bem-vindo!
-        </div>
         <div class="text-2xl py-4">
-          Login
+          Alterar senha
         </div>
         <form [formGroup]="loginForm" (ngSubmit)="isLoggedIn()">
           <div class="field">
@@ -14,25 +11,15 @@
             <input id="float-username" name="float-username" type="text" placeholder="Insira seu e-mail, ex:(email@email.com)" pInputText class="w-full p-inputtext-lg" formControlName="username">
           </div>
           <div class="field">
-            <label for="float-password" class="label">Senha</label>
+            <label for="float-password" class="label">Senha Atual</label>
             <input id="float-password" name="float-password" type="password" placeholder="Insira sua senha" pInputText class="w-full p-inputtext-lg" formControlName="password">
           </div>
-          <div class="flex justify-content-between">
-            <div class="field-checkbox">
-              <p-checkbox formControlName="checked" [binary]="true" inputId="binary"></p-checkbox>
-              <label for="binary" class="checked">Lembre de mim</label>
-            </div>
-            <div class="forgot">
-              <a href="/alterar-senha">Esqueceu a senha?</a>
-            </div>
+          <div class="field">
+            <label for="float-password" class="label">Nova Senha</label>
+            <input id="float-new-password" name="float-new-password" type="password" placeholder="Insira sua senha" pInputText class="w-full p-inputtext-lg" formControlName="newPassword">
           </div>
           <div class="py-2">
-            <button pButton pRipple type="submit" label="Entrar" class="p-button-custom w-full"></button>
-          </div>
-          <div class="py-2 w-full">
-            <div class="flex justify-content-center align-items-center register">
-              <a href="/register">Não tem uma conta? <strong class="pl-1 text-900">Crie uma aqui</strong></a>
-            </div>
+            <button pButton pRipple type="submit" label="Atualizar" class="p-button-custom w-full"></button>
           </div>
         </form>
       </div>

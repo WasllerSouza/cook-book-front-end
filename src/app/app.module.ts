@@ -6,7 +6,7 @@ import {PAGES} from "./module/app.pages";
 
 
 @NgModule({
-  declarations: [...PAGES],
+  declarations: [...PAGES, ],
   imports: [...IMPORTS],
   providers: [...PROVIDERS],
   bootstrap: [AppComponent]

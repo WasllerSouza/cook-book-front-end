@@ -1,0 +1,20 @@
+.login-container {
+  margin: 120px 40px;
+
+  .login-card {
+    flex: 0 1 auto;
+    width: 600px;
+  }
+  .image-login {
+    flex: 0 1 auto;
+    width: 800px;
+  }
+  @media (max-width: 1500px) {
+    .image-login {
+      width: 600px;
+    }
+  }
+}
+
+
+
