@@ -27,7 +27,19 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 # cook-book-front-end
-Aplicação front end para utilização do projeto de estudos na linguagem do dotnet.
+Aplicação desenvolvida com foco na facilidade de uso e na organização, esta aplicação permite aos usuários cadastrar, armazenar e explorar uma variedade de receitas culinárias de forma intuitiva.
+
+Principais funcionalidades:
+
+  1. Cadastro de Receitas: Os usuários podem inserir detalhes completos das receitas, incluindo nome, ingredientes, instruções passo a passo, tempo de preparo e categorias.
+
+  2. Pesquisa e Filtragem: Uma funcionalidade de pesquisa poderosa permite aos usuários encontrar rapidamente receitas específicas ou filtrá-las por categoria, ingredientes principais, tempo de preparo, entre outros critérios.
+
+  3. Visualização Detalhada: As receitas são exibidas em um formato fácil de ler, com imagens atraentes, lista de ingredientes e instruções claras.
+
+  4. Interface Responsiva: A aplicação é projetada para funcionar perfeitamente em dispositivos móveis e desktops, garantindo uma experiência consistente para todos os usuários.
+
+Esta aplicação foi criada com paixão pela culinária e pela tecnologia, proporcionando aos amantes da comida um local centralizado para armazenar e descobrir novas receitas. Explore, cozinhe e compartilhe suas delícias culinárias com facilidade e estilo!
 
 ## ✒Autores 
 | Papel                   | Nome                              | Contato                                           | 
