@@ -1,6 +1,7 @@
 # cook-book-front-end
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+Este projeto utiliza das melhores ferramentas para utilização da metodologia do clean code [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=WasllerSouza_cook-book-front-end&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=WasllerSouza_cook-book-front-end)
 
 ## Development server
 
