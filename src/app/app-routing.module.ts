@@ -12,48 +12,16 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path:'alterar-senha',component:AlterarSenhaComponent},
   {
-    path: 'home', component: HomeComponent, children: [
-      {path: '', redirectTo: 'todas', pathMatch: 'full'},
-      {
-      path: '',
-      data: {
-        role: []
-      },
-      loadChildren: async () => (await import('./feature/main/perfil/module/perfil.module')).PerfilModule
-    },
-      {
-        path: '',
-        data: {
-          role: []
-
-        },
-        loadChildren: async () => (await import('./feature/main/manha/module/manha.module')).manhaModule
-
-      },
-
-      {
-        path: '',
-        data: {
-          role: []
-        },
-        loadChildren: async () => (await import('./feature/main/almoco/module/almoco.module')).AlmocoModule
-      },
-      {
-        path: '',
-        data: {
-          role: []
-        },
-        loadChildren: async () => (await import('./feature/main/janta/module/janta.module')).JantaModule
-      },
-      {
-        path: '',
-        data: {
-          role: []
-        },
-        loadChildren: async () => (await import('./feature/main/todas/module/todas.module')).TodasModule
-      },
-      ]
+    path: 'home', component: HomeComponent
   },
+  {
+    path: '',
+    data: {
+      role: []
+    },
+    loadChildren: async () => (await import('./feature/perfil/module/perfil.module')).PerfilModule
+  },
+
   {path: '**', component: PageErrorComponent}
 
 

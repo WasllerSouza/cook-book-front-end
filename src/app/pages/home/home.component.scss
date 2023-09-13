@@ -1,11 +1,14 @@
-.app-home{
-  position:relative;
-  min-height:94.5vh;
-  width:100%;
-  .layout-footer{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height: 1rem;
-  }
+.backgroud-plus{
+  background: #673AB7;
+}
+.navegacao{
+
+  color:#000;
+}
+.navegacao:hover{
+  background: #673AB7;
+
+}
+.activ{
+  background: #673AB7;
 }
