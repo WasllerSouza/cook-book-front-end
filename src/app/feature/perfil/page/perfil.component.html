@@ -1,0 +1,40 @@
+<section class="mx-auto"  style="max-width: 950px" >
+
+        <form [formGroup]="registerForm" (ngSubmit)="isLoggedIn()" class="flex flex-column flex-wrap">
+          <div class="field">
+            <label for="float-name" class="label">Nome</label>
+            <input id="float-name" name="float-username" type="text" pInputText
+                   class="w-full p-inputtext-lg" formControlName="name"
+                   [ngClass]="{'ng-invalid ng-dirty':
+       registerForm.get('name').errors && (registerForm.get('name').dirty || registerForm.get('name').touched)}">
+            <div class="p-1"
+                 *ngIf="registerForm.get('name').errors && (registerForm.get('name').dirty || registerForm.get('name').touched)">
+              <small id="name-help-update" class="p-error block">E obrigatório informar o nome</small>
+            </div>
+          </div>
+          <div class="field">
+            <label for="float-username" class="label">E-mail*</label>
+            <input id="float-username" name="float-username" type="text"
+            pInputText class="w-full p-inputtext-lg"
+                   formControlName="username"
+                   [ngClass]="{'ng-invalid ng-dirty':
+       registerForm.get('username').errors && (registerForm.get('username').dirty || registerForm.get('username').touched)}">
+            <div class="p-1"
+                 *ngIf="registerForm.get('username').errors && (registerForm.get('username').dirty || registerForm.get('username').touched)">
+              <small id="username-help-required" class="p-error block">E obrigatório informar o E-mail.</small>
+            </div>
+          </div>
+          <div class="py-4 w-full h-15rem">
+            <div class="flex justify-content-start align-items-center register">
+              <a href="/alterar-senha" class="text-color font-bold">Alterar senha</a>
+            </div>
+          </div>
+          <div class="flex py-2 mx-auto justify-content-between align-items-center w-full">
+            <div><a (click)="deletar()" class="deletar">Deletar conta</a></div>
+            <div>
+              <button pButton pRipple type="submit" label="atualizar" class="p-button-custom"></button>
+            </div>
+          </div>
+        </form>
+
+</section>
