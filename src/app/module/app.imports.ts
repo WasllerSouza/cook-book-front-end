@@ -6,6 +6,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {LoginModule} from "../pages/login/login.module";
 import {RegisterModule} from "../pages/register/register.module";
 import {AlterarSenhaModule} from "../feature/alterar-senha/module/alterar-senha.module";
+import {AdicionarProdutoModule} from "../feature/adicionar-produto/module/adicionar-produto.module";
+import {NomeReceitaModule} from "../feature/adicionar-produto/child/nome-receita/module/nome-receita.module";
 
 export const IMPORTS: any[] = [
   BrowserModule,
@@ -15,5 +17,6 @@ export const IMPORTS: any[] = [
   HttpClientModule,
   LoginModule,
   RegisterModule,
-  AlterarSenhaModule
+  AlterarSenhaModule,
+  AdicionarProdutoModule
 ]

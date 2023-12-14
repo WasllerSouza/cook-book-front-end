@@ -1,0 +1,16 @@
+<section class="mx-auto" style="max-width: 950px">
+
+  <form [formGroup]="registerForm"  class="flex flex-column flex-wrap">
+    <div class="field">
+      <label for="float-name" class="label"><h1>Qual o nome para a receita?</h1></label>
+      <input id="float-name" name="float-username" type="text" pInputText
+             class="w-full p-inputtext-lg" formControlName="name"
+             [ngClass]="{'ng-invalid ng-dirty':
+       registerForm.get('name').errors && (registerForm.get('name').dirty || registerForm.get('name').touched)}">
+      <div class="p-1"
+           *ngIf="registerForm.get('name').errors && (registerForm.get('name').dirty || registerForm.get('name').touched)">
+        <small id="name-help-update" class="p-error block">E obrigatório informar o nome</small>
+      </div>
+    </div>
+  </form>
+</section>

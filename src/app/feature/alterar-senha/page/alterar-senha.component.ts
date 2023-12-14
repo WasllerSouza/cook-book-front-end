@@ -24,9 +24,9 @@ export class AlterarSenhaComponent implements OnInit {
   ngOnInit(): void {
     const $this = this;
     this.loginForm = this._fb.group({
-      username: [$this.user.username, Validators.required],
-      password: [$this.user.password, Validators.required],
-      newPassword: [$this.user.password, Validators.required],
+      username: [$this.user.nome, Validators.required],
+      password: [$this.user.senha, Validators.required],
+      newPassword: [$this.user.senha, Validators.required],
       checked: [$this.checked]
     });
   }

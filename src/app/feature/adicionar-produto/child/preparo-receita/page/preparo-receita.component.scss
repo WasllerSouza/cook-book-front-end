@@ -1,0 +1,31 @@
+.pre-container {
+  max-width: 950px;
+
+  .titulo-container {
+    padding: 20px;
+  }
+
+  .btnRmv {
+    background: none;
+    cursor: pointer;
+
+    i {
+      color: red;
+    }
+  }
+
+  .btnAdd {
+
+    background: none;
+    color: #222222;
+    border: none;
+    border-bottom: #222222 1px solid;
+    padding: 5px;
+    cursor: pointer;
+    i{
+      font-weight: bold;
+    }
+
+  }
+
+}

@@ -1,5 +1,5 @@
 <div class="flex flex-wrap justify-content-around login-container">
-  <section id="login-card"  class="login-card">
+  <section id="login-card" class="login-card">
     <p-card>
       <div class="flex flex-column">
         <div class="text-6xl">
@@ -11,11 +11,14 @@
         <form [formGroup]="loginForm" (ngSubmit)="isLoggedIn()">
           <div class="field">
             <label for="float-username" class="label">E-mail</label>
-            <input id="float-username" name="float-username" type="text" placeholder="Insira seu e-mail, ex:(email@email.com)" pInputText class="w-full p-inputtext-lg" formControlName="username">
+            <input id="float-username" name="float-username" type="text"
+                   placeholder="Insira seu e-mail, ex:(email@email.com)" pInputText class="w-full p-inputtext-lg"
+                   formControlName="email">
           </div>
           <div class="field">
             <label for="float-password" class="label">Senha</label>
-            <input id="float-password" name="float-password" type="password" placeholder="Insira sua senha" pInputText class="w-full p-inputtext-lg" formControlName="password">
+            <input id="float-password" name="float-password" type="password" placeholder="Insira sua senha" pInputText
+                   class="w-full p-inputtext-lg" formControlName="senha">
           </div>
           <div class="flex justify-content-between">
             <div class="field-checkbox">
