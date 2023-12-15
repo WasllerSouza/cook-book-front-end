@@ -1,0 +1,40 @@
+.card-ingrediente {
+  max-width: 1200px;
+
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  border-radius: 6px;
+
+  .ingrediente-titulo {
+    font-weight: bold;
+    font-size: 35px;
+    margin-bottom: 60px;
+  }
+
+  .btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    padding: 20px;
+    i{
+      display: none;
+    }
+    span{
+      font-size: 20px;
+      font-weight: bold;
+    }
+    @media (max-width: 800px) {
+      border-radius: 50%;
+      span{
+        display: none;
+      }
+      i{
+        display: block;
+      }
+    }
+  }
+}
+
+
