@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {ErrorService} from "../../../shared/componentes/alerta/services/error.service";
 import {UserModel} from "../../../pages/login/api/model/user.model";
 import {Observable, of} from "rxjs";
@@ -12,12 +12,12 @@ import {Observable, of} from "rxjs";
 })
 export class AlterarSenhaComponent implements OnInit {
 
-  constructor(private _router: Router, private _fb: FormBuilder,
+  constructor(private _router: Router, private _fb: UntypedFormBuilder,
               private _errorService: ErrorService) {
   }
 
   public user: UserModel = new UserModel();
-  public loginForm: FormGroup;
+  public loginForm: UntypedFormGroup;
 
   public checked: boolean;
 
