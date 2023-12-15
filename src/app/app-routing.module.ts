@@ -5,6 +5,7 @@ import {HomeComponent} from "./pages/home/home.component";
 import {RegisterComponent} from "./pages/register/register.component";
 import {PageErrorComponent} from "./shared/page-component/page-error/page-error.component";
 import {AlterarSenhaComponent} from "./feature/alterar-senha/page/alterar-senha.component";
+import {MostrarReceitaComponent} from "./feature/mostrar-receita/mostrar-receita.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {
     path: 'home', component: HomeComponent
   },
+  {path: 'receitas', component: MostrarReceitaComponent},
   {
     path: 'perfil',
     loadChildren: async () => (await import('./feature/perfil/module/perfil.module')).PerfilModule

@@ -6,6 +6,7 @@ import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InputTextModule} from "primeng/inputtext";
 import {RippleModule} from "primeng/ripple";
+import {PerfilRoutingModule} from "./perfil-routing.module";
 
 @NgModule({
   declarations: [PerfilComponent],
@@ -17,6 +18,7 @@ import {RippleModule} from "primeng/ripple";
     InputTextModule,
     ReactiveFormsModule,
     RippleModule,
+    PerfilRoutingModule
   ],
   exports: [PerfilComponent]
 })

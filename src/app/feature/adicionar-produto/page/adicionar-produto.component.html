@@ -23,12 +23,14 @@
     </div>
   </ng-container>
   <div class="col-12">
-    <div class="h-full flex justify-content-around align-items-end">
-      <div>
+    <div [ngClass]="{'justify-content-end':produtos.activeIndex == 0,'justify-content-around':produtos.activeIndex > 0}"
+         class="h-full flex py-3 align-items-end">
+      <div *ngIf="produtos.activeIndex > 0">
         <p-button label="voltar" (click)="onDowngradeIndex()"></p-button>
       </div>
       <div>
-        <p-button label="{{produtos.activeIndex == 4 ?'salvar' : 'avançar'}}" [loading]="produtos.loading"  (click)="onUpdateIndexOrSave()"></p-button>
+        <p-button label="{{produtos.activeIndex == 4 ?'salvar' : 'avançar'}}" [loading]="produtos.loading"
+                  (click)="onUpdateIndexOrSave()"></p-button>
       </div>
     </div>
   </div>

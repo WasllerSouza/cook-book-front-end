@@ -28,10 +28,9 @@ export class ProdutosStore {
     loading: false,
     ingredientes: [],
     categories: [
-      {name: 'Accounting', key: 'A'},
-      {name: 'Marketing', key: 'M'},
-      {name: 'Production', key: 'P'},
-      {name: 'Research', key: 'R'}
+      {name: 'café da manhã', key: 'A'},
+      {name: 'Almoço', key: 'M'},
+      {name: 'jantar', key: 'P'},
     ]
   });
 
@@ -69,4 +68,5 @@ export class ProdutosStore {
     const currentState = this.state;
     this.produtosSubject.next({...currentState, loading: loading});
   }
+
 }

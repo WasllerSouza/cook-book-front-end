@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ProdutosStore} from "../../store/produtos.store";
+import {ProdutosFacade} from "../../facade/produtos.facade";
 
 @Component({
   selector: 'app-ingrediente-receita',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IngredienteReceitaComponent implements OnInit {
 
-  constructor() { }
+  constructor(public store: ProdutosStore, private facade: ProdutosFacade) {
+  }
 
   ngOnInit(): void {
   }
 
+  adicionar(n: string) {
+    this.facade.adicionarIngrediente(n);
+  }
+
+  remover() {
+    this.facade.removerIngrediente();
+  }
 }

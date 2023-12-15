@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {ProdutosStore} from "../store/produtos.store";
 import {ProdutosBaseService} from "../service/produtos-base.service";
+import {resolve} from "@angular/compiler-cli";
 
 @Injectable()
 export class ProdutosFacade {
@@ -41,5 +42,17 @@ export class ProdutosFacade {
     console.log('salvando...');
     this.store.loading = true;
     setTimeout(() => this.store.loading = false, 1000)
+  }
+
+  public adicionarIngrediente(n: string) {
+    this.store.produtos$.subscribe(value => {
+      value.ingredientes.push(n);
+      console.log(value.ingredientes)
+    })
+  }
+  public removerIngrediente(){
+    this.store.produtos$.subscribe(value  =>{
+      value.ingredientes.pop();
+    })
   }
 }

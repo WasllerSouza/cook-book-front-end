@@ -1,15 +1,27 @@
-<section class="pre-container mx-auto flex flex-column" style="max-width: 950px" >
-  <div>
+<section class="pre-container mx-auto flex flex-column" style="max-width: 950px">
+  <div class="flex flex-row flex-row-reverse align-self-center formgroup-inline justify-content-center"
+       *ngIf="store.produtos$ | async as produtos">
+    <button class="btnAdd font-bold" (click)="adicionar(produtos.stepsForm.get('ingredientesReceita').value)"><i
+      class="pi pi-plus-circle" style="font-size: 1.5rem"></i>
+    </button>
+    <form class="field" [formGroup]="produtos.stepsForm">
+      <label for="lastname5" class="p-sr-only"></label>
+      <input id="lastname5" type="text"
+             class="text-base text-color surface-overlay p-2 border-none border-bottom-1 border-bottom-solid surface-border appearance-none outline-none "
+             placeholder="Adicionar ingrediente" formControlName="ingredientesReceita">
+
+    </form>
+  </div>
+  <div *ngIf="store.produtos$ | async as produtos">
     <div class="titulo-container border-bottom-1"><h1>Ingredientes</h1></div>
-    <div class="flex border-bottom-1 justify-content-between my-4">
-      <p class="px-5 py-2"><i class="pi pi-circle-fill mx-2" style="font-size: 0.6rem"></i> ingrediente placeholder</p>
-      <button class="border-none btnRmv px-4 py-2" ><i class="pi pi-minus-circle"
+    <div class="flex border-bottom-1 justify-content-between my-4" *ngFor=" let ingrediente of produtos.ingredientes ">
+      <p class="px-5 py-2"><i class="pi pi-circle-fill mx-2" style="font-size: 0.6rem"></i> {{ingrediente}}</p>
+      <button class="border-none btnRmv px-4 py-2" (click)="remover()"><i class="pi pi-minus-circle"
                                                                           style="font-size: 1.5rem"></i></button>
     </div>
+    {{produtos.stepsForm.get('ingredientesReceita').value | json}}
   </div>
 
-  <div class="flex flex-row flex-row-reverse">
-    <button class="btnAdd font-bold"><i class="pi pi-plus" style="font-size: .8rem"></i> NOVO INGREDIENTE</button>
-  </div>
+
 </section>
 
