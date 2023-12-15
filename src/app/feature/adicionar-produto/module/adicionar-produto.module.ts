@@ -1,21 +1,15 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {AdicionarProdutoComponent} from "../page/adicionar-produto.component";
-import {StepsModule} from 'primeng/steps';
-import {NomeReceitaModule} from "../child/nome-receita/module/nome-receita.module";
-import {ToastModule} from "primeng/toast";
-import { AdicionarRoutingModule } from './adicionar-routing.module';
+import {ADD_PRODUTOS_COMPONENTES} from "./adicionar-produtos.components";
+import {ADD_PRODUTOS_PROVIDERS} from "./adicionar-produtos.providers";
+import {ADD_PRODUTO_IMPORTS} from "./adicionar-produto.imports";
 
 
 @NgModule({
-  declarations: [AdicionarProdutoComponent],
-  imports: [
-    CommonModule,
-    NomeReceitaModule,
-    ToastModule,
-    StepsModule,
-    AdicionarRoutingModule
-  ], exports: [AdicionarProdutoComponent]
+  declarations: [...ADD_PRODUTOS_COMPONENTES],
+  imports: [...ADD_PRODUTO_IMPORTS],
+  providers: [...ADD_PRODUTOS_PROVIDERS],
+  exports: [AdicionarProdutoComponent]
 })
 export class AdicionarProdutoModule {
 }

@@ -1,8 +1,0 @@
-<section class="mx-8 p-grid">
-  <h5 class="titulo column-gap-0">Qual categoria voce deseja</h5>
-  <div *ngFor="let category of categories" class="field-checkbox col-1">
-    <p-radioButton [inputId]="category.key" name="category" [value]="category"
-                   [(ngModel)]="selectedCategory"></p-radioButton>
-    <label [for]="category.key">{{category.name}}</label>
-  </div>
-</section>

@@ -1,0 +1,16 @@
+<section class="mx-auto" style="max-width: 950px" *ngIf="store.produtos$ | async as produtos">
+  <form [formGroup]="produtos.stepsForm" class="flex flex-column flex-wrap">
+    <div class="field">
+      <label for="float-name" class="label"><h1>Qual o nome para a receita?</h1></label>
+      <input id="float-name" name="float-username" type="text" pInputText
+             class="w-full p-inputtext-lg" formControlName="nomeReceita"
+             [ngClass]="{'ng-invalid ng-dirty':
+       produtos.stepsForm.get('nomeReceita').errors && (produtos.stepsForm.get('nomeReceita').dirty || produtos.stepsForm.get('nomeReceita').touched)}">
+      <div class="p-1"
+           *ngIf="produtos.stepsForm.get('nomeReceita').errors && (produtos.stepsForm.get('nomeReceita').dirty || produtos.stepsForm.get('nomeReceita').touched)">
+        <small id="name-help-update" class="p-error block">E obrigatório informar o nome</small>
+      </div>
+      {{produtos.stepsForm.get('nomeReceita').value | json}}
+    </div>
+  </form>
+</section>

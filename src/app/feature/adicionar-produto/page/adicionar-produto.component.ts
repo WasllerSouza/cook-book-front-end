@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MenuItem, MessageService} from "primeng/api";
 import {Subscription} from "rxjs";
+import {ProdutosFacade} from "../facade/produtos.facade";
+import {ProdutosStore} from "../store/produtos.store";
 
 @Component({
   selector: 'app-adicionar-produto',
@@ -8,13 +10,19 @@ import {Subscription} from "rxjs";
   styleUrls: ['./adicionar-produto.component.scss']
 })
 export class AdicionarProdutoComponent implements OnInit {
-  items: MenuItem[];
-  subscription: Subscription;
 
-  constructor(public messageService: MessageService) { }
+  constructor(private facade: ProdutosFacade, public store: ProdutosStore) {
+  }
 
   ngOnInit(): void {
-    this.items = [{}]
+    this.facade.initComponent();
+  }
+
+  onDowngradeIndex() {
+    this.facade.onDowngradeIndex();
+  }
+  onUpdateIndexOrSave() {
+    this.facade.onUpdateIndexOrSave();
   }
 
 }

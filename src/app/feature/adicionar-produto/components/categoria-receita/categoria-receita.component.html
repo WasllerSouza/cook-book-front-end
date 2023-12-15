@@ -1,0 +1,11 @@
+<section class="mx-auto" style="max-width: 950px" *ngIf="store.produtos$ | async as produtos">
+  <h5 class="titulo column-gap-0">Qual categoria voce deseja</h5>
+  <form [formGroup]="produtos.stepsForm">
+    <div *ngFor="let category of produtos.categories" class="field-checkbox col-1">
+      <p-radioButton [inputId]="category.key" [value]="category"
+                     formControlName="categoriaReceita"></p-radioButton>
+      <label [for]="category.key" class="ml-2">{{category.name}}</label>
+    </div>
+    {{produtos.stepsForm.get('categoriaReceita').value | json}}
+  </form>
+</section>
