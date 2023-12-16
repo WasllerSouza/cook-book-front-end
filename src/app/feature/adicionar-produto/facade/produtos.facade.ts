@@ -2,11 +2,15 @@ import {Injectable} from "@angular/core";
 import {ProdutosStore} from "../store/produtos.store";
 import {ProdutosBaseService} from "../service/produtos-base.service";
 import {resolve} from "@angular/compiler-cli";
+import {ProdutosService} from "../service/produtos.service";
+import {ProdutosModel} from "../api/model/Produtos.model";
+import {Observable} from "rxjs";
+import {GenericResponse} from "../../../api/generic-response";
 
 @Injectable()
 export class ProdutosFacade {
 
-  constructor(private store: ProdutosStore, private service: ProdutosBaseService) {
+  constructor(private store: ProdutosStore, private service: ProdutosBaseService, private produtoService:ProdutosService) {
   }
 
   public initComponent(): void{
@@ -55,4 +59,24 @@ export class ProdutosFacade {
       value.ingredientes.pop();
     })
   }
+
+  public getProdutos(){
+    this.produtoService.getProdutos();
+  }
+  public postProdutos(value:ProdutosModel){
+    this.produtoService.postProdutos(value).subscribe(res=>{
+
+    });
+  }
+  public putProdutos(value:ProdutosModel){
+    this.produtoService.putProdutos(value).subscribe(res=>{
+
+    });
+  }
+  public deleteProdutos(id:number){
+    this.produtoService.deleteProdutos(id).subscribe(res=>{
+
+    });
+  }
+
 }
