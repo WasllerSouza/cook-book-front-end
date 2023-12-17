@@ -1,7 +1,9 @@
 export class ProdutosModel {
   private _titulo: string
-  private _ingrediente: string;
-  private _Preparo: string
+  private _ingredientes: Ingredientes[];
+  private _modoPreparoPreparo: string
+  private _categoria: number;
+
 
   get titulo(): string {
     return this._titulo;
@@ -11,20 +13,51 @@ export class ProdutosModel {
     this._titulo = value;
   }
 
-  get ingrediente(): string {
-    return this._ingrediente;
+  get ingredientes(): Ingredientes[] {
+    return this._ingredientes;
   }
 
-  set ingrediente(value: string) {
-    this._ingrediente = value;
+  set ingredientes(value: Ingredientes[]) {
+    this._ingredientes = value;
   }
 
-  get Preparo(): string {
-    return this._Preparo;
+  get modoPreparoPreparo(): string {
+    return this._modoPreparoPreparo;
   }
 
-  set Preparo(value: string) {
-    this._Preparo = value;
+  set modoPreparoPreparo(value: string) {
+    this._modoPreparoPreparo = value;
+  }
+
+  get categoria(): number {
+    return this._categoria;
+  }
+
+  set categoria(value: number) {
+    this._categoria = value;
+  }
+
+}
+
+export class Ingredientes {
+  private _produto: string;
+  private _quantidade: string;
+
+
+  get produto(): string {
+    return this._produto;
+  }
+
+  set produto(value: string) {
+    this._produto = value;
+  }
+
+  get quantidade(): string {
+    return this._quantidade;
+  }
+
+  set quantidade(value: string) {
+    this._quantidade = value;
   }
 }
 

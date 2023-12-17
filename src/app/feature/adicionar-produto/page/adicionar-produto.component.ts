@@ -21,8 +21,11 @@ export class AdicionarProdutoComponent implements OnInit {
   onDowngradeIndex() {
     this.facade.onDowngradeIndex();
   }
+
   onUpdateIndexOrSave() {
     this.facade.onUpdateIndexOrSave();
+
   }
+
 
 }

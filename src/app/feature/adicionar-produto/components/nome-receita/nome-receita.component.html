@@ -3,14 +3,14 @@
     <div class="field">
       <label for="float-name" class="label"><h1>Qual o nome para a receita?</h1></label>
       <input id="float-name" name="float-username" type="text" pInputText
-             class="w-full p-inputtext-lg" formControlName="nomeReceita"
+             class="w-full p-inputtext-lg" formControlName="titulo"
              [ngClass]="{'ng-invalid ng-dirty':
-       produtos.stepsForm.get('nomeReceita').errors && (produtos.stepsForm.get('nomeReceita').dirty || produtos.stepsForm.get('nomeReceita').touched)}">
+       produtos.stepsForm.get('titulo').errors && (produtos.stepsForm.get('titulo').dirty || produtos.stepsForm.get('titulo').touched)}">
       <div class="p-1"
-           *ngIf="produtos.stepsForm.get('nomeReceita').errors && (produtos.stepsForm.get('nomeReceita').dirty || produtos.stepsForm.get('nomeReceita').touched)">
+           *ngIf="produtos.stepsForm.get('titulo').errors && (produtos.stepsForm.get('titulo').dirty || produtos.stepsForm.get('titulo').touched)">
         <small id="name-help-update" class="p-error block">E obrigatório informar o nome</small>
       </div>
-      {{produtos.stepsForm.get('nomeReceita').value | json}}
+      {{produtos.stepsForm.get('titulo').value | json}}
     </div>
   </form>
 </section>

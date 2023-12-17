@@ -1,14 +1,16 @@
 import {inject, Injectable} from "@angular/core";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BehaviorSubject} from "rxjs";
 import {MenuItem} from "primeng/api";
+import {Ingredientes} from "../api/model/Produtos.model";
 
 export class ProdutosState {
   stepsForm: FormGroup;
+  ingredientesForm: FormGroup;
   items: MenuItem[];
   activeIndex: number = 0;
   loading: boolean;
-  ingredientes: string[];
+  ingredientes: Ingredientes[];
   categories: any[]
 
 }
@@ -18,21 +20,27 @@ export class ProdutosStore {
   private fb = inject(FormBuilder);
   private produtosSubject: BehaviorSubject<ProdutosState> = new BehaviorSubject<ProdutosState>({
     stepsForm: this.fb.group({
-      nomeReceita: ['', Validators.required],
-      categoriaReceita: ['', Validators.required],
-      ingredientesReceita: ['', Validators.required],
-      modoDePreparoReceita: ['', Validators.required],
+      titulo: ['', Validators.required],
+      categoria: ['', Validators.required],
+      ingredientes: ['', Validators.required],
+      modoPreparo: ['', Validators.required],
     }),
+    ingredientesForm: this.fb.group({
+      produto: ['', Validators.required],
+      quantidade: ['', Validators.required]
+    }),
+
     items: [],
     activeIndex: 0,
     loading: false,
     ingredientes: [],
     categories: [
-      {name: 'café da manhã', key: 'A'},
-      {name: 'Almoço', key: 'M'},
-      {name: 'jantar', key: 'P'},
+      {name: 'café da manhã', key: '1'},
+      {name: 'Almoço', key: '2'},
+      {name: 'jantar', key: '3'},
     ]
   });
+
 
   public get state() {
     return this.produtosSubject.value;
