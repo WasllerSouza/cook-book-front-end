@@ -5,21 +5,24 @@ import {HomeComponent} from "./pages/home/home.component";
 import {RegisterComponent} from "./pages/register/register.component";
 import {PageErrorComponent} from "./shared/page-component/page-error/page-error.component";
 import {AlterarSenhaComponent} from "./feature/alterar-senha/page/alterar-senha.component";
+import {MostrarReceitaComponent} from "./feature/mostrar-receita/mostrar-receita.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path:'alterar-senha',component:AlterarSenhaComponent},
+  {path: 'alterar-senha', component: AlterarSenhaComponent},
   {
     path: 'home', component: HomeComponent
   },
+  {path: 'receitas', component: MostrarReceitaComponent},
   {
-    path: '',
-    data: {
-      role: []
-    },
+    path: 'perfil',
     loadChildren: async () => (await import('./feature/perfil/module/perfil.module')).PerfilModule
+  },
+  {
+    path: 'adicionar',
+    loadChildren: async () => (await import('./feature/adicionar-produto/module/adicionar-produto.module')).AdicionarProdutoModule
   },
 
   {path: '**', component: PageErrorComponent}

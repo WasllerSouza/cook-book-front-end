@@ -1,46 +1,59 @@
 export class UserModel {
-  private _id: number;
-  private _name: string;
-  private _username: string;
-  private _picture: string;
-  private _password: string;
+
+  private _email: string;
+  private _senha: string;
+  private _nome: string;
+  private _telefone:string;
+  private _senhaAtual:string;
+  private _novaSenha:string;
+
 
   constructor() {}
 
-  get id(): number {
-    return this._id;
+
+  get senhaAtual(): string {
+    return this._senhaAtual;
   }
 
-  set id(id: number) {
-    this._id = id;
+  set senhaAtual(value: string) {
+    this._senhaAtual = value;
   }
 
-  get name(): string {
-    return this._name;
+  get novaSenha(): string {
+    return this._novaSenha;
   }
 
-  set name(name: string) {
-    this._name = name;
-  }
-  get username(): string {
-    return this._username;
+  set novaSenha(value: string) {
+    this._novaSenha = value;
   }
 
-  set username(username: string) {
-    this._username = username;
-  }
-  get password(): string {
-    return this._password;
+  get email(): string {
+    return this._email;
   }
 
-  set password(password: string) {
-    this._password = password;
-  }
-  get picture(): string {
-    return this._picture;
+  set nome(value: string) {
+    this._email = value;
   }
 
-  set picture(picture: string) {
-    this._picture = picture;
+
+  get nome(): string {
+    return this._nome;
+  }
+
+  get senha(): string {
+    return this._senha;
+  }
+
+  set senha(value: string) {
+    this._senha = value;
+  }
+
+
+  get telefone(): string {
+    return this._telefone;
+  }
+
+  set telefone(value: string) {
+    this._telefone = value;
   }
 }

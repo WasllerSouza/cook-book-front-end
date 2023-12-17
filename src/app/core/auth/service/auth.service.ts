@@ -8,6 +8,6 @@ export class AuthService {
   constructor() { }
 
   public getToken(): string{
-    return 'token'
+    return null
   }
 }

@@ -8,12 +8,22 @@ import {GenericResponse} from "../../../api/generic-response";
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService{
+export class LoginService {
   constructor(private http: HttpClient) {
   }
 
-  public login(user: UserModel): Observable<GenericResponse<any>>{
+  public login(user: UserModel): Observable<GenericResponse<any>> {
     const apiUrl = LOGIN_API_ROUTES.login();
     return this.http.post<GenericResponse<any>>(apiUrl, user);
+  }
+
+  public register(user: UserModel): Observable<GenericResponse<any>> {
+    const apiUrl = LOGIN_API_ROUTES.register();
+    return this.http.post<GenericResponse<any>>(apiUrl, user)
+  }
+
+  public recorveryPassword(user: UserModel): Observable<GenericResponse<any>> {
+    const apiUrl = LOGIN_API_ROUTES.recorveryPassword();
+    return this.http.put<GenericResponse<any>>(apiUrl, user);
   }
 }

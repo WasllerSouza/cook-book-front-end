@@ -1,31 +1,60 @@
-<section class="mx-auto"  style="max-width: 950px">
+<section class="mx-auto card-home" style="max-width: 950px">
   <div class="formgroup-inline justify-content-center">
-    <button  type="button" class="px-3 py-2 text-base border-none cursor-pointer bg-transparent
-    transition-all transition-duration-200"><i class="pi pi-search" style="font-size: 1rem; color: #222222"></i></button>
+    <button type="button" class="px-3 py-2 text-base border-none cursor-pointer bg-transparent
+    transition-all transition-duration-200"><i class="pi pi-search" style="font-size: 1rem; color: #222222"></i>
+    </button>
     <div class="field">
-      <label for="lastname5" class="p-sr-only">Lastname</label>
-      <input id="lastname5" type="text" class="text-base text-color surface-overlay p-2 border-none border-bottom-1 border-bottom-solid surface-border appearance-none outline-none " placeholder="pesquise por receita">
+      <label for="lastname5" class="p-sr-only"></label>
+      <input id="lastname5" type="text"
+             class="text-base text-color surface-overlay p-2 border-none border-bottom-1 border-bottom-solid surface-border appearance-none outline-none "
+             placeholder="pesquise por receita">
     </div>
   </div>
   <div class="flex justify-content-center"><h2 class="mx-4">categorias</h2></div>
 
   <div class="flex justify-content-center">
     <ul class="flex my-4">
-      <li><a  routerLinkActive="activ text-white font-bold" class="mx-2 hover:text-white p-3 navegacao">Todas</a></li>
-      <li><a  routerLinkActive="activ text-white font-bold" class="mx-2 hover:text-white p-3 navegacao"> manhã</a></li>
-      <li><a  routerLinkActive="activ text-white font-bold" class="mx-2 hover:text-white p-3 navegacao">Almoço</a></li>
-      <li><a  routerLinkActive="activ text-white font-bold" class="mx-2 hover:text-white p-3 navegacao">Janta</a></li>
+      <li><a [ngClass]="{'activ text-white font-bold':key===0}" class="mx-2 hover:text-white p-3 navegacao"
+             (click)="mudarKey(0)">Todas</a></li>
+      <li><a [ngClass]="{'activ text-white font-bold':key===1}" class="mx-2 hover:text-white p-3 navegacao"
+             (click)="mudarKey(1)"> manhã</a></li>
+      <li><a [ngClass]="{'activ text-white font-bold':key===2}" class="mx-2 hover:text-white p-3 navegacao"
+             (click)="mudarKey(2)">Almoço</a></li>
+      <li><a [ngClass]="{'activ text-white font-bold':key===3}" class="mx-2 hover:text-white p-3 navegacao "
+             (click)="mudarKey(3)">Janta</a></li>
     </ul>
   </div>
-  <div class="flex justify-content-between border-bottom-1 my-4 mx-4">
-    <div class="">
-      <h1 class="my-2">placeholder titulo</h1>
-      <p class="my-2">placeholder detalhe</p>
+  <ng-container *ngIf="key > 0 else todos">
+    <div class="flex justify-content-between border-bottom-1 my-4 mx-4">
+      <div class="">
+        <h1 class="my-2">{{categoria?.nome}}</h1>
+        <p class="my-2">{{categoria?.detalhe}}</p>
+      </div>
+      <a routerLink="/receitas"> <i class="pi pi-arrow-right text-black-alpha-80" style="font-size: 2rem"></i></a>
     </div>
-    <a routerLink="/"> <i class="pi pi-arrow-right text-black-alpha-80" style="font-size: 2rem"></i></a>
+    <div class="flex justify-content-around align-items-center">
+      <div><a routerLink="/home" class="text-black-alpha-80">compartilhado<i class="pi pi-heart-fill mx-2"
+                                                                             style="font-size: 1rem"></i></a></div>
+      <div><a routerLink="/adicionar/produto" class="text-white  "><i
+        class="pi pi-plus p-2 backgroud-plus border-circle font-bold" style="font-size: 1rem"></i></a></div>
+    </div>
+  </ng-container>
+
+
+</section>
+
+<ng-template #todos>
+  <div class="flex justify-content-between border-bottom-1 my-4 mx-4" *ngFor="let categoria of categoriaArr">
+    <div class="">
+      <h1 class="my-2">{{categoria.nome}}</h1>
+      <p class="my-2">{{categoria.detalhe}}</p>
+    </div>
+    <a routerLink="/receitas"> <i class="pi pi-arrow-right text-black-alpha-80" style="font-size: 2rem"></i></a>
   </div>
   <div class="flex justify-content-around align-items-center">
-    <div><a routerLink="/home" class="text-black-alpha-80">compartilhado<i class="pi pi-heart-fill mx-2" style="font-size: 1rem"></i></a></div>
-    <div> <a routerLink="criar-receita"  class="text-white  "><i class="pi pi-plus p-2 backgroud-plus border-circle font-bold" style="font-size: 1rem"></i></a></div>
+    <div><a routerLink="/home" class="text-black-alpha-80">compartilhado<i class="pi pi-heart-fill mx-2"
+                                                                           style="font-size: 1rem"></i></a></div>
+    <div><a routerLink="/adicionar/produto" class="text-white  "><i
+      class="pi pi-plus p-2 backgroud-plus border-circle font-bold" style="font-size: 1rem"></i></a></div>
   </div>
-</section>
+</ng-template>
