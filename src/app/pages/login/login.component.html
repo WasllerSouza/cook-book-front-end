@@ -1,4 +1,4 @@
-<div class="flex flex-wrap justify-content-around login-container">
+<div class="flex flex-wrap justify-content-around login-container" *ngIf="userStore.user$ | async as usuario">
   <section id="login-card" class="login-card">
     <p-card>
       <div class="flex flex-column">
@@ -8,7 +8,9 @@
         <div class="text-2xl py-4">
           Login
         </div>
-        <form [formGroup]="loginForm" (ngSubmit)="isLoggedIn()">
+        <form [formGroup]="usuario.LoginForm" (ngSubmit)="isLoggedIn()">
+          {{usuario.LoginForm.get('email').value| json}}
+          {{usuario.LoginForm.get('senha').value| json}}
           <div class="field">
             <label for="float-username" class="label">E-mail</label>
             <input id="float-username" name="float-username" type="text"
@@ -42,7 +44,8 @@
     </p-card>
 
   </section>
-  <section id="image">
-    <img src="assets/img-login.jpg" class="image-login" alt="ilustração-de-pessoas-comendo-pizza">
-  </section>
+  <!--  <section id="image" >-->
+  <!--    <img ngSrc="assets/img-login.jpg" class="image-login" alt="ilustração-de-pessoas-comendo-pizza" height="2000"-->
+  <!--         width="3000">-->
+  <!--  </section>-->
 </div>

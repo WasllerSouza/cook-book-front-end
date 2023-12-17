@@ -1,5 +1,5 @@
 import {NgModule} from "@angular/core";
-import {CommonModule} from "@angular/common";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {LoginComponent} from "./login.component";
 import {RippleModule} from "primeng/ripple";
@@ -11,17 +11,18 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [LoginComponent],
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    CommonModule,
-    BrowserAnimationsModule,
-    RippleModule,
-    ButtonModule,
-    InputTextModule,
-    CheckboxModule,
-    CardModule
-  ],
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        CommonModule,
+        BrowserAnimationsModule,
+        RippleModule,
+        ButtonModule,
+        InputTextModule,
+        CheckboxModule,
+        CardModule,
+        NgOptimizedImage
+    ],
   exports: [LoginComponent]
 })
 export class LoginModule {
