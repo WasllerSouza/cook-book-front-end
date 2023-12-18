@@ -7,6 +7,7 @@ import {LoginModule} from "../pages/login/login.module";
 import {RegisterModule} from "../pages/register/register.module";
 import {AlterarSenhaModule} from "../feature/alterar-senha/module/alterar-senha.module";
 import {AdicionarProdutoModule} from "../feature/adicionar-produto/module/adicionar-produto.module";
+import {HeaderComponent} from "../core/header/header.component";
 
 export const IMPORTS: any[] = [
   BrowserModule,
@@ -18,4 +19,5 @@ export const IMPORTS: any[] = [
   RegisterModule,
   AlterarSenhaModule,
   AdicionarProdutoModule,
+  HeaderComponent,
 ]
