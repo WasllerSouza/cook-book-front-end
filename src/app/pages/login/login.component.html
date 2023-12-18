@@ -8,7 +8,7 @@
         <div class="text-2xl py-4">
           Login
         </div>
-        <form [formGroup]="usuario.LoginForm" (ngSubmit)="isLoggedIn()">
+        <form [formGroup]="usuario.LoginForm">
           {{usuario.LoginForm.get('email').value| json}}
           {{usuario.LoginForm.get('senha').value| json}}
           <div class="field">
@@ -27,12 +27,12 @@
               <p-checkbox formControlName="checked" [binary]="true" inputId="binary"></p-checkbox>
               <label for="binary" class="checked">Lembre de mim</label>
             </div>
-            <div class="forgot">
-              <a href="/alterar-senha">Esqueceu a senha?</a>
-            </div>
+<!--            <div class="forgot">-->
+<!--              <a href="/alterar-senha">Esqueceu a senha?</a>-->
+<!--            </div>-->
           </div>
           <div class="py-2">
-            <button pButton pRipple type="submit" label="Entrar" class="p-button-custom w-full"></button>
+            <button pButton pRipple type="button" label="Entrar" (click)="isLoggedIn()" class="p-button-custom w-full"></button>
           </div>
           <div class="py-2 w-full">
             <div class="flex justify-content-center align-items-center register">
@@ -44,8 +44,7 @@
     </p-card>
 
   </section>
-  <!--  <section id="image" >-->
-  <!--    <img ngSrc="assets/img-login.jpg" class="image-login" alt="ilustração-de-pessoas-comendo-pizza" height="2000"-->
-  <!--         width="3000">-->
-  <!--  </section>-->
+    <section id="image" >
+      <img src="assets/img-login.jpg" class="image-login" alt="ilustração-de-pessoas-comendo-pizza">
+    </section>
 </div>

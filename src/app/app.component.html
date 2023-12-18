@@ -1,4 +1,4 @@
-<div class="app-home">
+<div class="app-home" *ngIf="session$ | async as session; else login">
   <app-header></app-header>
   <app-alert></app-alert>
   <main class="py-2" >
@@ -6,3 +6,8 @@
   </main>
   <app-footer class="layout-footer"></app-footer>
 </div>
+
+<ng-template #login>
+  <app-alert></app-alert>
+  <router-outlet></router-outlet>
+</ng-template>

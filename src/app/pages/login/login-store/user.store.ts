@@ -17,6 +17,7 @@ export class UserStore {
     LoginForm: this.fb.group({
       email: ['', Validators.required],
       senha: ['', Validators.required],
+      checked: [''],
 
     }),
     RegisterForm:this.fb.group({

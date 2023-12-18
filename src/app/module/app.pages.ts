@@ -7,7 +7,6 @@ import {MostrarReceitaComponent} from "../feature/mostrar-receita/mostrar-receit
 export const PAGES: any[] = [
   AppComponent,
   HomeComponent,
-  HeaderComponent,
   FooterComponent,
   MostrarReceitaComponent
 

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserStore} from "./login-store/user.store";
 import {UserFacade} from "./facade/user.facade";
+import {AuthFacade} from "../../core/auth/facade/auth.facade";
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import {UserFacade} from "./facade/user.facade";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public userStore: UserStore, private facade: UserFacade) {
+  constructor(public userStore: UserStore, private facade: UserFacade, private _facade: AuthFacade) {
   }
 
 

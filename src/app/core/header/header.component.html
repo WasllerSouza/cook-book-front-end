@@ -14,9 +14,11 @@
           <i class="pi pi-user mx-2" style="font-size: 1rem"></i>
         </a>
       </div>
-      <div><a routerLink="home" routerLinkActive="activ font-bold p-2 text-white" class=" navegacao p-3 hover:text-white">Home<i
+      <div><a routerLink="home" routerLinkActive="activ font-bold p-2 text-white"
+              class=" navegacao p-3 hover:text-white">Home<i
         class="pi pi-book  font-bold mx-2" style="font-size: 1rem"></i></a></div>
     </div>
-    <a routerLink="/login" class=""><i class="pi pi-sign-out text-color font-bold" style="font-size: 1.5rem"></i></a>
+    <p-button icon="pi pi-sign-out" size="large" [link]="true" (click)="logout()"></p-button>
+<!--    <a routerLink="/login" class=""><i class="pi pi-sign-out text-color font-bold" style="font-size: 1.5rem"></i></a>-->
   </div>
 </header>
