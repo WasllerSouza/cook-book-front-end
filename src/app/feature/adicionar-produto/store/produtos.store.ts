@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BehaviorSubject} from "rxjs";
 import {MenuItem} from "primeng/api";
 import {Ingredientes} from "../api/model/Produtos.model";
+import {CategoriaEnum} from "../api/enum/categoria.enum";
 
 export class ProdutosState {
   stepsForm: FormGroup;
@@ -35,9 +36,10 @@ export class ProdutosStore {
     loading: false,
     ingredientes: [],
     categories: [
-      {name: 'café da manhã', key: '1'},
-      {name: 'Almoço', key: '2'},
-      {name: 'jantar', key: '3'},
+      {name: 'café da manhã', key: CategoriaEnum.CAFE_DA_MANHA},
+      {name: 'Almoço', key: CategoriaEnum.ALMOCO},
+      {name: 'Sobremesa', key: CategoriaEnum.SOBREMESA},
+      {name: 'jantar', key: CategoriaEnum.JANTAR},
     ]
   });
 
