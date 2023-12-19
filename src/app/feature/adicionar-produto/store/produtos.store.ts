@@ -1,18 +1,29 @@
 import {inject, Injectable} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {MenuItem} from "primeng/api";
-import {Ingredientes} from "../api/model/Produtos.model";
+import {Ingredientes, ProdutosModel} from "../api/model/Produtos.model";
 import {CategoriaEnum} from "../api/enum/categoria.enum";
+import {Categoria, SearchModel} from "../../../pages/home/api/model/categories.model";
 
 export class ProdutosState {
   stepsForm: FormGroup;
   ingredientesForm: FormGroup;
+  categoriaForm: FormGroup;
+  searchForm: FormGroup;
   items: MenuItem[];
   activeIndex: number = 0;
   loading: boolean;
   ingredientes: Ingredientes[];
   categories: any[]
+  ingrediente: Ingredientes;
+  produtos: ProdutosModel;
+  search: SearchModel;
+  key: number;
+  homeIngrediente: Observable<Ingredientes[]>;
+  homeIngrediente$: Observable<Ingredientes>;
+  receitaProduto: Observable<ProdutosModel>
+
 
 }
 
@@ -26,9 +37,16 @@ export class ProdutosStore {
       ingredientes: ['', Validators.required],
       modoPreparo: ['', Validators.required],
     }),
+    categoriaForm: this.fb.group({
+      categoria: ['', Validators.required],
+    }),
     ingredientesForm: this.fb.group({
       produto: ['', Validators.required],
       quantidade: ['', Validators.required]
+    }),
+    searchForm: this.fb.group({
+      store: ['', Validators.required],
+      filter: ['', Validators.required]
     }),
 
     items: [],
@@ -40,7 +58,15 @@ export class ProdutosStore {
       {name: 'Almoço', key: CategoriaEnum.ALMOCO},
       {name: 'Sobremesa', key: CategoriaEnum.SOBREMESA},
       {name: 'jantar', key: CategoriaEnum.JANTAR},
-    ]
+    ],
+    ingrediente: new Ingredientes(),
+    produtos: new ProdutosModel(),
+    search: new SearchModel(),
+    key: null,
+    homeIngrediente: null,
+    homeIngrediente$: null,
+    receitaProduto: null,
+
   });
 
 

@@ -1,9 +1,18 @@
 export class ProdutosModel {
+  private _id: number;
   private _titulo: string
   private _ingredientes: Ingredientes[];
   private _modoPreparoPreparo: string
   private _categoria: number;
 
+
+  get id(): number {
+    return this._id;
+  }
+
+  set id(value: number) {
+    this._id = value;
+  }
 
   get titulo(): string {
     return this._titulo;
@@ -40,9 +49,18 @@ export class ProdutosModel {
 }
 
 export class Ingredientes {
+  private _id: number
   private _produto: string;
   private _quantidade: string;
 
+
+  get id(): number {
+    return this._id;
+  }
+
+  set id(value: number) {
+    this._id = value;
+  }
 
   get produto(): string {
     return this._produto;

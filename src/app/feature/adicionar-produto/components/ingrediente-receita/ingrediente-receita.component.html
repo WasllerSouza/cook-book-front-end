@@ -1,7 +1,7 @@
 <section class="pre-container mx-auto flex flex-column" style="max-width: 950px">
   <div>
-    <a (click)="ativador()" class="underline" style="cursor: pointer"><i class="mx-2" [ngClass]="icone()"
-                                                                         style="font-size: 1.3rem"></i></a>
+    <a (click)="ativador()" class="font-bold" style="cursor: pointer"><i class="mx-2" [ngClass]="icone()"
+                                                                         style="font-size: 1.3rem"></i> ingredientes</a>
   </div>
   <div class="mx-auto" *ngIf="valor">
     <div class="flex flex-column  align-self-center formgroup-inline justify-content-center p-4 " style="width: 300px "
@@ -18,7 +18,7 @@
 
       </form>
       <button class="btnAdd font-bold align-self-end" (click)="adicionar()"><i
-        class="pi pi-plus-circle" style="font-size: 1.5rem"></i>
+        class="pi pi-plus-circle adicionar" style="font-size: 1.5rem"></i>
       </button>
 
     </div>

@@ -7,11 +7,11 @@ import {UserModel} from "../api/model/user.model";
 import {Router} from "@angular/router";
 import {ErrorService} from "../../../shared/componentes/alerta/services/error.service";
 import {AuthFacade} from "../../../core/auth/facade/auth.facade";
+import {Validators} from "@angular/forms";
 
 @Injectable()
 export class UserFacade {
-  user: UserModel;
-  public checked: boolean;
+
 
   constructor(
     private loginService: LoginService,
@@ -19,23 +19,23 @@ export class UserFacade {
     private _router: Router,
     private _errorService: ErrorService,
     private _auth: AuthFacade,
-    ) {
+  ) {
   }
 
   login(): Observable<any> {
-    this.checked = this.userStore.check;
+    this.userStore.state.checked = this.userStore.check;
     return of({});
 
   }
 
   isLoggedI() {
-    this.user = Object.assign({}, this.user, this.userStore.state.LoginForm.value);
+    this.userStore.state.user = Object.assign({}, this.userStore.state.user, this.userStore.state.LoginForm.value);
     if (this.userStore.state.LoginForm.valid) {
-      this.loginService.login(this.user).pipe(
+      this.loginService.login(this.userStore.state.user).pipe(
         tap((generic) => {
-          this._auth.setCookie(generic.data.LifeTimeInMinutes,  generic.data.Token);
+          this._auth.setCookie(generic.data.lifeTimeInMinutes,  generic.data.token);
           this.clearForm();
-          if(this._auth.checkCookie)
+          if (this._auth.checkCookie)
             this._router.navigateByUrl('/home')
         }),
         catchError((err: GenericResponse<any>) => {
@@ -54,20 +54,32 @@ export class UserFacade {
     }
   }
 
-  clearForm(){
+  clearForm() {
     this.userStore.state.LoginForm.reset({
       email: '',
       senha: '',
       checked: ''
     });
+
+    this.userStore.state.RegisterForm.reset({
+      nome: '',
+      email: '',
+      senha: '',
+      telefone: '',
+    });
+    this.userStore.state.RecorveryForm.reset({
+      senhaAtual: '',
+      novaSenha: ''
+    });
   }
 
   register() {
-    this.user = Object.assign({}, this.user, this.userStore.state.RegisterForm.value);
+    this.userStore.state.user = Object.assign({}, this.userStore.state.user, this.userStore.state.RegisterForm.value);
     if (this.userStore.state.RegisterForm.valid) {
-      this.loginService.register(this.user).pipe(
+      this.loginService.register(this.userStore.state.user).pipe(
         tap(() => {
           this._errorService.showErrors('registrado com sucesso!')
+          this.clearForm();
         }), catchError((err: GenericResponse<any>) => {
           this._errorService.showErrorsTyped({
             messageType: 'error',
@@ -81,11 +93,12 @@ export class UserFacade {
   }
 
   recorvery() {
-    this.user = Object.assign({}, this.user, this.userStore.state.RecorveryForm.value);
+    this.userStore.state.user = Object.assign({}, this.userStore.state.user, this.userStore.state.RecorveryForm.value);
     if (this.userStore.state.RecorveryForm.valid) {
-      this.loginService.recorveryPassword(this.user).pipe(
+      this.loginService.recorveryPassword(this.userStore.state.user).pipe(
         tap(() => {
           this._errorService.showErrors('Alterado com sucesso!')
+          this.clearForm();
         }), catchError((err: GenericResponse<any>) => {
           this._errorService.showErrorsTyped({
             messageType: 'error',

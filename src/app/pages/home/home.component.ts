@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Categoria} from "./api/model/categories.model";
 import {HomeServiceService} from "./service/home-service.service";
+import {ProdutosFacade} from "../../feature/adicionar-produto/facade/produtos.facade";
+import {ProdutosStore} from "../../feature/adicionar-produto/store/produtos.store";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -9,28 +12,29 @@ import {HomeServiceService} from "./service/home-service.service";
 })
 export class HomeComponent implements OnInit {
   categoria: Categoria;
-  key = 0
   categoriaArr: Categoria[];
 
-  constructor(private homeService: HomeServiceService) {
+  constructor(private homeService: HomeServiceService,
+              private facade: ProdutosFacade,
+              public store: ProdutosStore,
+              private router: Router) {
   }
 
   ngOnInit(): void {
-    this.getAllCategoria()
-    this.getCategoria()
-  }
-
-  getCategoria() {
-    this.categoria = this.homeService.findById(this.key);
-  }
-
-  getAllCategoria() {
-    this.categoriaArr = this.homeService.getAll();
+    this.facade.findById();
+    this.facade.findAll();
   }
 
   mudarKey(value: number) {
-    this.key = value;
-    this.categoria = this.homeService.findById(this.key);
+    this.facade.mudarKey(value);
+    this.facade.findById();
   }
 
+  search() {
+    this.facade.searchForm();
+  }
+
+  navegarReceita(id: number) {
+    this.router.navigateByUrl('/receitas/' + id);
+  }
 }

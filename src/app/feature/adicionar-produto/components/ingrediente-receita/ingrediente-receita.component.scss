@@ -1,5 +1,11 @@
 .pre-container {
   max-width: 950px;
+  .adicionar{
+    color: rgba(7, 91, 7, 0.72);
+  }
+  .remover{
+    color:red;
+  }
 
   .titulo-container {
     padding: 20px;

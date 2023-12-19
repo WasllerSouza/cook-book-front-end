@@ -1,6 +1,7 @@
 import {inject, Injectable} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BehaviorSubject} from "rxjs";
+import {UserModel} from "../api/model/user.model";
 
 
 export class UserState {
@@ -8,6 +9,7 @@ export class UserState {
   RegisterForm: FormGroup;
   LoginForm: FormGroup;
   checked: boolean;
+  user: UserModel;
 }
 
 @Injectable()
@@ -32,6 +34,7 @@ export class UserStore {
     }),
 
     checked: false,
+    user: new UserModel()
 
   });
 
