@@ -33,7 +33,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'receitas',
+    path: 'receitas/:id',
     canActivate: [AuthGuard],
     data: {checkUnauthorized: true},
     component: MostrarReceitaComponent

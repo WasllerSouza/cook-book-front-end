@@ -33,7 +33,7 @@ export class UserFacade {
     if (this.userStore.state.LoginForm.valid) {
       this.loginService.login(this.userStore.state.user).pipe(
         tap((generic) => {
-          this._auth.setCookie(generic.data.LifeTimeInMinutes, generic.data.Token);
+          this._auth.setCookie(generic.data.lifeTimeInMinutes,  generic.data.token);
           this.clearForm();
           if (this._auth.checkCookie)
             this._router.navigateByUrl('/home')

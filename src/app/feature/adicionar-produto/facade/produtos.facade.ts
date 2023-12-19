@@ -6,8 +6,8 @@ import {Ingredientes, ProdutosModel} from "../api/model/Produtos.model";
 import {catchError, tap, throwError} from "rxjs";
 import {GenericResponse} from "../../../api/generic-response";
 import {ErrorService} from "../../../shared/componentes/alerta/services/error.service";
-import {Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {HomeServiceService} from "../../../pages/home/service/home-service.service";
 
 
 @Injectable()
@@ -18,7 +18,8 @@ export class ProdutosFacade {
               private service: ProdutosBaseService,
               private produtoService: ProdutosService,
               private _errorService: ErrorService,
-              private router: Router) {
+              private router: Router,
+              private homeService: HomeServiceService) {
   }
 
   public initComponent(): void {
@@ -67,16 +68,17 @@ export class ProdutosFacade {
     this.store.state.ingredientes.pop()
   }
 
-  public getProdutos() {
-    this.produtoService.getProdutos();
-  }
-
   clearForm() {
     this.store.state.ingredientesForm.reset({
       produto: '',
       quantidade: '',
     });
     this.store.state.stepsForm.reset({
+      titulo: '',
+      ingredientes: '',
+      modoPreparo: '',
+    });
+    this.store.state.searchForm.reset({
       titulo: '',
       ingredientes: '',
       modoPreparo: '',
@@ -121,4 +123,43 @@ export class ProdutosFacade {
     });
   }
 
+  public mudarKey(value: number) {
+    this.store.state.key = value;
+  }
+
+  findById() {
+    this.store.state.homeIngrediente$ = this.homeService.findById(this.store.state.key);
+  }
+
+  findAll() {
+    this.store.state.homeIngrediente = this.homeService.getAll(this.store.state.key).pipe();
+  }
+
+  searchForm() {
+    this.store.produtos$.subscribe(res =>
+      res.searchForm.get('filter').setValue((this.store.state.key)));
+    this.store.state.search = Object.assign({}, this.store.state.search, this.store.state.searchForm.value);
+
+    console.log('formulario', this.store.state.searchForm.value)
+    console.log('seachModel', this.store.state.search)
+    if (this.store.state.searchForm.valid) {
+      this.homeService.searchProducts(this.store.state.search).pipe(
+        tap(() => {
+          this.clearForm();
+        }), catchError((err: GenericResponse<any>) => {
+          this._errorService.showErrorsTyped({
+            messageType: 'error',
+            message: err.errors
+          })
+          return throwError(err);
+        })
+      ).subscribe(res => {
+        console.log(res);
+      });
+    }
+  }
+
+  findProdutoId(id: number) {
+    this.store.state.receitaProduto = this.homeService.findById(id);
+  }
 }

@@ -1,36 +1,43 @@
 <section class="mx-auto card-home" style="max-width: 950px">
-  <div class="formgroup-inline justify-content-center">
-    <button type="button" class="px-3 py-2 text-base border-none cursor-pointer bg-transparent
+  <div class="formgroup-inline justify-content-center" *ngIf="store.produtos$ | async as produtos">
+    <button (click)="search()" type="button" class="px-3 py-2 text-base border-none cursor-pointer bg-transparent
     transition-all transition-duration-200"><i class="pi pi-search" style="font-size: 1rem; color: #222222"></i>
     </button>
     <div class="field">
-      <label for="lastname5" class="p-sr-only"></label>
-      <input id="lastname5" type="text"
-             class="text-base text-color surface-overlay p-2 border-none border-bottom-1 border-bottom-solid surface-border appearance-none outline-none "
-             placeholder="pesquise por receita">
+      <form [formGroup]="produtos.searchForm">
+        <label for="lastname5" class="p-sr-only"></label>
+        <input id="lastname5" type="text" formControlName="store"
+               class="text-base text-color surface-overlay p-2 border-none border-bottom-1 border-bottom-solid surface-border appearance-none outline-none "
+               placeholder="pesquise por receita">
+      </form>
     </div>
   </div>
   <div class="flex justify-content-center"><h2 class="mx-4">categorias</h2></div>
 
   <div class="flex justify-content-center">
     <ul class="flex my-4">
-      <li><a [ngClass]="{'activ text-white font-bold':key===0}" class="mx-2 hover:text-white p-3 navegacao"
-             (click)="mudarKey(0)">Todas</a></li>
-      <li><a [ngClass]="{'activ text-white font-bold':key===1}" class="mx-2 hover:text-white p-3 navegacao"
-             (click)="mudarKey(1)"> manhã</a></li>
-      <li><a [ngClass]="{'activ text-white font-bold':key===2}" class="mx-2 hover:text-white p-3 navegacao"
-             (click)="mudarKey(2)">Almoço</a></li>
-      <li><a [ngClass]="{'activ text-white font-bold':key===3}" class="mx-2 hover:text-white p-3 navegacao "
+      <li><a [ngClass]="{'activ text-white font-bold':store.state.key===null}"
+             class="mx-2 hover:text-white p-3 navegacao"
+             (click)="mudarKey(null)">Todas</a></li>
+      <li><a [ngClass]="{'activ text-white font-bold':store.state.key===0}" class="mx-2 hover:text-white p-3 navegacao"
+             (click)="mudarKey(0)"> manhã</a></li>
+      <li><a [ngClass]="{'activ text-white font-bold':store.state.key===1}" class="mx-2 hover:text-white p-3 navegacao"
+             (click)="mudarKey(1)">Almoço</a></li>
+      <li><a [ngClass]="{'activ text-white font-bold':store.state.key===2}" class="mx-2 hover:text-white p-3 navegacao"
+             (click)="mudarKey(2)">sobremesa</a></li>
+      <li><a [ngClass]="{'activ text-white font-bold':store.state.key===3}" class="mx-2 hover:text-white p-3 navegacao "
              (click)="mudarKey(3)">Janta</a></li>
     </ul>
   </div>
-  <ng-container *ngIf="key > 0 else todos">
-    <div class="flex justify-content-between border-bottom-1 my-4 mx-4">
+  <ng-container *ngIf="store.state.key != null else todos">
+    <div class="flex justify-content-between border-bottom-1 my-4 mx-4"
+         *ngIf="store.state.homeIngrediente$|async as produtos">
       <div class="">
-        <h1 class="my-2">{{categoria?.nome}}</h1>
-        <p class="my-2">{{categoria?.detalhe}}</p>
+        <h1 class="my-2">{{produtos?.produto}}</h1>
+        <p class="my-2">{{produtos?.quantidade}}</p>
       </div>
-      <a routerLink="/receitas"> <i class="pi pi-arrow-right text-black-alpha-80" style="font-size: 2rem"></i></a>
+      <a (click)="navegarReceita(produtos?.id)"> <i class="pi pi-arrow-right text-black-alpha-80"
+                                                    style="font-size: 2rem"></i></a>
     </div>
     <div class="flex justify-content-around align-items-center">
       <div><a routerLink="/home" class="text-black-alpha-80">compartilhado<i class="pi pi-heart-fill mx-2"
@@ -44,12 +51,13 @@
 </section>
 
 <ng-template #todos>
-  <div class="flex justify-content-between border-bottom-1 my-4 mx-4" *ngFor="let categoria of categoriaArr">
-    <div class="">
-      <h1 class="my-2">{{categoria.nome}}</h1>
-      <p class="my-2">{{categoria.detalhe}}</p>
+  <div class="flex justify-content-between border-bottom-1 my-4 mx-4" *ngIf="store.state.homeIngrediente|async as produtos" >
+    <div class="" *ngFor="let categoria of produtos">
+      <h1 class="my-2">{{categoria.produto}}</h1>
+      <p class="my-2">{{categoria.quantidade}}</p>
     </div>
-    <a routerLink="/receitas"> <i class="pi pi-arrow-right text-black-alpha-80" style="font-size: 2rem"></i></a>
+    <a (click)="navegarReceita(categoria.id)"> <i class="pi pi-arrow-right text-black-alpha-80"
+                                                  style="font-size: 2rem"></i></a>
   </div>
   <div class="flex justify-content-around align-items-center">
     <div><a routerLink="/home" class="text-black-alpha-80">compartilhado<i class="pi pi-heart-fill mx-2"

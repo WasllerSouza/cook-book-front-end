@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 
 import {GenericResponse} from "../../../api/generic-response";
 import {HOME_API_ROUTES} from "../api/api.routes";
-import {HttpClient} from "@angular/common/http";
-import {Categoria, categoriaArr} from "../api/model/categories.model";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {Categoria, categoriaArr, SearchModel} from "../api/model/categories.model";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,19 @@ export class HomeServiceService {
   constructor(private http: HttpClient) {
   }
 
-  findById(id: number) {
-    // const apiUrl = HOME_API_ROUTES.getCategories(id);
-    // return this.http.get<GenericResponse<any>>(apiUrl);
-    return this.home.find(home => home.id === id)
+  findById(id: number): Observable<any> {
+    const apiUrl = HOME_API_ROUTES.getById();
+    return this.http.get<any>(apiUrl, {params: new HttpParams().append('id', id)})
   }
 
-  getAll() {
-    return this.home
+  getAll(id: number): Observable<any> {
+    const apiUrl = HOME_API_ROUTES.getAll();
+    return this.http.get<any>(apiUrl, {params: new HttpParams().append('id', id)});
   }
+
+  searchProducts(search: SearchModel): Observable<GenericResponse<any>> {
+    const apiUrl = HOME_API_ROUTES.searchProduct();
+    return this.http.post<GenericResponse<any>>(apiUrl, search);
+  }
+
 }
