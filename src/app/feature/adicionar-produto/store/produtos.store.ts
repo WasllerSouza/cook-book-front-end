@@ -2,17 +2,20 @@ import {inject, Injectable} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {BehaviorSubject} from "rxjs";
 import {MenuItem} from "primeng/api";
-import {Ingredientes} from "../api/model/Produtos.model";
+import {Ingredientes, ProdutosModel} from "../api/model/Produtos.model";
 import {CategoriaEnum} from "../api/enum/categoria.enum";
 
 export class ProdutosState {
   stepsForm: FormGroup;
   ingredientesForm: FormGroup;
+  categoriaForm: FormGroup;
   items: MenuItem[];
   activeIndex: number = 0;
   loading: boolean;
   ingredientes: Ingredientes[];
   categories: any[]
+  ingrediente: Ingredientes;
+  produtos: ProdutosModel;
 
 }
 
@@ -25,6 +28,9 @@ export class ProdutosStore {
       categoria: ['', Validators.required],
       ingredientes: ['', Validators.required],
       modoPreparo: ['', Validators.required],
+    }),
+    categoriaForm: this.fb.group({
+      categoria: ['', Validators.required],
     }),
     ingredientesForm: this.fb.group({
       produto: ['', Validators.required],
@@ -40,7 +46,10 @@ export class ProdutosStore {
       {name: 'Almoço', key: CategoriaEnum.ALMOCO},
       {name: 'Sobremesa', key: CategoriaEnum.SOBREMESA},
       {name: 'jantar', key: CategoriaEnum.JANTAR},
-    ]
+    ],
+    ingrediente: new Ingredientes(),
+    produtos: new ProdutosModel()
+
   });
 
 

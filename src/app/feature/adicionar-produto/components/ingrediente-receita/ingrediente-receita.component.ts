@@ -31,8 +31,8 @@ export class IngredienteReceitaComponent implements OnInit {
 
   icone(): string {
     if (this.valor) {
-      return ' pi pi-minus-circle'
+      return ' pi pi-minus-circle remover'
     }
-    return 'pi pi-plus-circle';
+    return 'pi pi-plus-circle adicionar';
   }
 }

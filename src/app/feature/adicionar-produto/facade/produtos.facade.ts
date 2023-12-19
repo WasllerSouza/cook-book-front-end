@@ -6,14 +6,19 @@ import {Ingredientes, ProdutosModel} from "../api/model/Produtos.model";
 import {catchError, tap, throwError} from "rxjs";
 import {GenericResponse} from "../../../api/generic-response";
 import {ErrorService} from "../../../shared/componentes/alerta/services/error.service";
+import {Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 
 @Injectable()
 export class ProdutosFacade {
-  ingrediente: Ingredientes;
-  produtos: ProdutosModel;
 
-  constructor(private store: ProdutosStore, private service: ProdutosBaseService, private produtoService: ProdutosService, private _errorService: ErrorService) {
+
+  constructor(private store: ProdutosStore,
+              private service: ProdutosBaseService,
+              private produtoService: ProdutosService,
+              private _errorService: ErrorService,
+              private router: Router) {
   }
 
   public initComponent(): void {
@@ -48,16 +53,14 @@ export class ProdutosFacade {
 
   salvarReceita() {
     this.postProdutos();
-    console.log(this.produtos)
-    console.log('salvando...');
     this.store.loading = true;
     setTimeout(() => this.store.loading = false, 1000)
 
   }
 
   public adicionarIngrediente() {
-    this.ingrediente = Object.assign({}, this.ingrediente, this.store.state.ingredientesForm.value);
-    this.store.state.ingredientes.push(this.ingrediente);
+    this.store.state.ingrediente = Object.assign({}, this.store.state.ingrediente, this.store.state.ingredientesForm.value);
+    this.store.state.ingredientes.push(this.store.state.ingrediente);
   }
 
   public removerIngrediente() {
@@ -68,15 +71,33 @@ export class ProdutosFacade {
     this.produtoService.getProdutos();
   }
 
+  clearForm() {
+    this.store.state.ingredientesForm.reset({
+      produto: '',
+      quantidade: '',
+    });
+    this.store.state.stepsForm.reset({
+      titulo: '',
+      ingredientes: '',
+      modoPreparo: '',
+    });
+    this.store.state.ingredientes = [];
+    this.store.items.length = 0
+    this.store.state.activeIndex = 0;
+  }
+
   public postProdutos() {
     this.store.produtos$.subscribe(res => res.stepsForm.get('ingredientes').setValue(this.store.state.ingredientes))
     this.store.produtos$.subscribe(res =>
-      res.stepsForm.get('categoria').setValue((numberAttribute(this.store.state.stepsForm.get('categoria').value.key))))
-    this.produtos = Object.assign({}, this.produtos, this.store.state.stepsForm.value);
+      res.stepsForm.get('categoria').setValue((this.store.state.categoriaForm.get('categoria').value.key)));
+    this.store.state.produtos = Object.assign({}, this.store.state.produtos, this.store.state.stepsForm.value);
     if (this.store.state.stepsForm.valid) {
-      this.produtoService.postProdutos(this.produtos).pipe(
+      this.produtoService.postProdutos(this.store.state.produtos).pipe(
         tap(() => {
           this._errorService.showErrors('Enviado com sucesso!')
+          this.clearForm();
+          this.router.navigateByUrl('/home');
+
         }), catchError((err: GenericResponse<any>) => {
           this._errorService.showErrorsTyped({
             messageType: 'error',
