@@ -4,7 +4,9 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {MenuItem} from "primeng/api";
 import {Ingredientes, ProdutosModel} from "../api/model/Produtos.model";
 import {CategoriaEnum} from "../api/enum/categoria.enum";
-import {Categoria, SearchModel} from "../../../pages/home/api/model/categories.model";
+import {SearchModel} from "../../receita/api/model/categories.model";
+import {GenericResponse} from "../../../api/generic-response";
+import {DashBoardResponse} from "../../receita/api/model/response/dash-board.response";
 
 export class ProdutosState {
   stepsForm: FormGroup;
@@ -21,7 +23,7 @@ export class ProdutosState {
   search: SearchModel;
   key: number;
   homeIngrediente: Observable<Ingredientes[]>;
-  homeIngrediente$: Observable<Ingredientes>;
+  homeIngrediente$: Observable<GenericResponse<DashBoardResponse>>;
   receitaProduto: Observable<ProdutosModel>
 
 

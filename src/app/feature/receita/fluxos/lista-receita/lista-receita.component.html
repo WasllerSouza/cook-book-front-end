@@ -1,0 +1,52 @@
+<section class="mx-auto card-home" style="max-width: 950px" *ngIf="store.state$ | async as state">
+  <div class="formgroup-inline justify-content-center">
+    <div class="field">
+      <form [formGroup]="state.searchForm">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input type="text" pInputText formControlName="search" class="p-inputtext-lg"/>
+        </span>
+      </form>
+    </div>
+  </div>
+  <div class="flex justify-content-center"><h2 class="mx-4">categorias</h2></div>
+  <div class="flex justify-content-center">
+    <ul class="flex my-4">
+      <li><a [ngClass]="{'activ text-white font-bold':store.searchModel.filter===null}"
+             class="mx-2 hover:text-white p-3 navegacao"
+             (click)="filtrar(null)">Todas</a></li>
+      <li><a [ngClass]="{'activ text-white font-bold':store.searchModel.filter===0}"
+             class="mx-2 hover:text-white p-3 navegacao"
+             (click)="filtrar(store.cafeDaManha)"> manhã</a></li>
+      <li><a [ngClass]="{'activ text-white font-bold':store.searchModel.filter===1}"
+             class="mx-2 hover:text-white p-3 navegacao"
+             (click)="filtrar(store.almoco)">Almoço</a></li>
+      <li><a [ngClass]="{'activ text-white font-bold':store.searchModel.filter===2}"
+             class="mx-2 hover:text-white p-3 navegacao"
+             (click)="filtrar(store.sobremesa)">sobremesa</a></li>
+      <li><a [ngClass]="{'activ text-white font-bold':store.searchModel.filter===3}"
+             class="mx-2 hover:text-white p-3 navegacao "
+             (click)="filtrar(store.jantar)">Janta</a></li>
+    </ul>
+  </div>
+  <ng-container *ngIf="state.dashBoard$ | async as receitas; else semReceitas">
+    <ng-container *ngFor="let receita of receitas.data">
+      <div class="flex justify-content-between align-items-center border-bottom-1 my-4 mx-4 scroll"
+           (click)="navegarReceita(receita?.id)">
+        <div>
+          <h1 class="my-2">{{receita?.titulo}}</h1>
+          <p class="my-2">{{receita?.quantidadeIngredientes}} ingredientes</p>
+        </div>
+        <div>
+          <i class="pi pi-arrow-right text-black-alpha-80"></i>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</section>
+<ng-template #semReceitas>
+  <div class="flex flex-column justify-content-center align-items-center">
+    <img src="assets/no_data.svg" alt="lista-vazia" width="300">
+    <p class="font-bold mt-2">Sem Receitas</p>
+  </div>
+</ng-template>

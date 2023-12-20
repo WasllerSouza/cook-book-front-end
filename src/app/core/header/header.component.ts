@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ButtonModule} from "primeng/button";
 import {AuthFacade} from "../auth/facade/auth.facade";
 import {RouterLink, RouterLinkActive} from "@angular/router";
+import {AuthStore} from "../auth/store/auth.store";
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private auth: AuthFacade) { }
+  constructor(private auth: AuthFacade, public store: AuthStore) { }
 
   ngOnInit(): void {
   }

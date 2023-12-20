@@ -9,8 +9,6 @@
           Login
         </div>
         <form [formGroup]="usuario.LoginForm">
-          {{usuario.LoginForm.get('email').value| json}}
-          {{usuario.LoginForm.get('senha').value| json}}
           <div class="field">
             <label for="float-username" class="label">E-mail</label>
             <input id="float-username" name="float-username" type="text"

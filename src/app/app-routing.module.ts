@@ -5,7 +5,7 @@ import {HomeComponent} from "./pages/home/home.component";
 import {RegisterComponent} from "./pages/register/register.component";
 import {PageErrorComponent} from "./shared/page-component/page-error/page-error.component";
 import {AlterarSenhaComponent} from "./feature/alterar-senha/page/alterar-senha.component";
-import {MostrarReceitaComponent} from "./feature/mostrar-receita/mostrar-receita.component";
+import {MostrarReceitaComponent} from "./feature/receita/fluxos/mostrar-receita/mostrar-receita.component";
 import {AuthGuard} from "./core/auth/guard/auth.guard";
 
 const routes: Routes = [

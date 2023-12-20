@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 import {ErrorService} from "../../../shared/componentes/alerta/services/error.service";
 import {AuthFacade} from "../../../core/auth/facade/auth.facade";
 import {Validators} from "@angular/forms";
+import {AuthStore} from "../../../core/auth/store/auth.store";
 
 @Injectable()
 export class UserFacade {
@@ -19,6 +20,7 @@ export class UserFacade {
     private _router: Router,
     private _errorService: ErrorService,
     private _auth: AuthFacade,
+    private store: AuthStore
   ) {
   }
 
@@ -35,7 +37,7 @@ export class UserFacade {
         tap((generic) => {
           this._auth.setCookie(generic.data.lifeTimeInMinutes,  generic.data.token);
           this.clearForm();
-          if (this._auth.checkCookie)
+          if (this.store.checkCookie)
             this._router.navigateByUrl('/home')
         }),
         catchError((err: GenericResponse<any>) => {

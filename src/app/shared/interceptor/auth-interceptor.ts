@@ -6,6 +6,7 @@ import {ErrorService} from "../componentes/alerta/services/error.service";
 import {TypeError} from "../page-component/page-error/enum/type-error.enum";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthFacade} from "../../core/auth/facade/auth.facade";
+import {AuthStore} from "../../core/auth/store/auth.store";
 
 @Injectable()
 export class AuthTokenInterceptor implements HttpInterceptor {
@@ -13,15 +14,16 @@ export class AuthTokenInterceptor implements HttpInterceptor {
   constructor(
     private _facade: AuthFacade,
     private _router: Router,
+    private store: AuthStore,
     private _erroService: ErrorService
   ) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authReq = req;
-    if(this._facade.token){
+    if (this.store.token) {
       authReq = req.clone({
-        setHeaders: {Authorization: `Bearer ${this._facade.token}`},
+        setHeaders: {Authorization: `Bearer ${this.store.token}`},
         withCredentials: false
       })
     }
