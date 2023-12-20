@@ -1,43 +1,65 @@
-<div class="flex flex-wrap justify-content-around login-container">
+<div class="flex flex-wrap justify-content-around login-container" *ngIf="userSore.user$ | async as registro">
   <section id="image" class="image-login">
     <img src="assets/img-login.jpg" class="image-login" alt="ilustração-de-pessoas-comendo-pizza">
   </section>
   <section id="login-card" class="login-card">
     <p-card>
       <div class="flex flex-column">
-        <form [formGroup]="registerForm" (ngSubmit)="isLoggedIn()">
+        <form [formGroup]="registro.RegisterForm" (ngSubmit)="isLoggedIn()">
+          <!--          nome-->
           <div class="field">
             <label for="float-name" class="label">Nome*</label>
             <input id="float-rname" name="float-username" type="text" placeholder="Insira seu nome" pInputText
-                   class="w-full p-inputtext-lg" formControlName="name"
+                   class="w-full p-inputtext-lg" formControlName="nome"
                    [ngClass]="{'ng-invalid ng-dirty':
-       registerForm.get('name').errors && (registerForm.get('name').dirty || registerForm.get('name').touched)}">
+       registro.RegisterForm.get('nome').errors && (registro.RegisterForm.get('nome').dirty || registro.RegisterForm.get('nome').touched)}">
             <div class="p-1"
-                 *ngIf="registerForm.get('name').errors && (registerForm.get('name').dirty || registerForm.get('name').touched)">
-              <small id="name-help-update" class="p-error block">E obrigatório informar o nome</small>
+                 *ngIf="registro.RegisterForm.get('nome').errors && (registro.RegisterForm.get('nome').dirty || registro.RegisterForm.get('nome').touched)">
+              <small id="nome-help-update" class="p-error block">E obrigatório informar o nome</small>
             </div>
           </div>
+
+          <!--          email-->
           <div class="field">
             <label for="float-username" class="label">E-mail*</label>
             <input id="float-username" name="float-username" type="text"
                    placeholder="Insira seu e-mail, ex:(email@email.com)" pInputText class="w-full p-inputtext-lg"
-                   formControlName="username"
+                   formControlName="email"
                    [ngClass]="{'ng-invalid ng-dirty':
-       registerForm.get('username').errors && (registerForm.get('username').dirty || registerForm.get('username').touched)}">
+       registro.RegisterForm.get('email').errors && (registro.RegisterForm.get('email').dirty || registro.RegisterForm.get('email').touched)}">
             <div class="p-1"
-                 *ngIf="registerForm.get('username').errors && (registerForm.get('username').dirty || registerForm.get('username').touched)">
-              <small id="username-help-required" class="p-error block">E obrigatório informar o E-mail.</small>
+                 *ngIf="registro.RegisterForm.get('email').errors && (registro.RegisterForm.get('email').dirty || registro.RegisterForm.get('email').touched)">
+              <small id="email-help-required" class="p-error block">E obrigatório informar o E-mail.</small>
             </div>
           </div>
+          <!--          senha-->
           <div class="field">
             <label for="float-password" class="label">Senha*</label>
             <input id="float-password" name="float-password" type="password" placeholder="Insira sua senha" pInputText
-                   class="w-full p-inputtext-lg" formControlName="password"
+                   class="w-full p-inputtext-lg" formControlName="senha"
                    [ngClass]="{'ng-invalid ng-dirty':
-       registerForm.get('password').errors && (registerForm.get('password').dirty || registerForm.get('password').touched)}">
+       registro.RegisterForm.get('senha').errors && (registro.RegisterForm.get('senha').dirty || registro.RegisterForm.get('senha').touched)}">
             <div class="p-1"
-                 *ngIf="registerForm.get('password').errors && (registerForm.get('password').dirty || registerForm.get('password').touched)">
-              <small id="password-help-required" class="p-error block">E obrigatório informar a senha.</small>
+                 *ngIf="registro.RegisterForm.get('senha').getError('required') && (registro.RegisterForm.get('senha').dirty || registro.RegisterForm.get('senha').touched)">
+              <small id="senha-help-required" class="p-error block">E obrigatório informar a senha.</small>
+            </div>
+            <div class="p-1"
+                 *ngIf="registro.RegisterForm.get('senha').getError('minLength') && (registro.RegisterForm.get('senha').dirty || registro.RegisterForm.get('senha').touched)">
+              <small id="senha-help-max" class="p-error block">E obrigatorio ter 6 digitos</small>
+            </div>
+          </div>
+
+
+          <!--          telefone-->
+          <div class="field">
+            <label for="float-password" class="label">telefone*</label>
+            <input id="float-telefone" name="float-password" type="text" placeholder="+55(00)9 0000-0000" pInputText
+                   class="w-full p-inputtext-lg" formControlName="telefone"
+                   [ngClass]="{'ng-invalid ng-dirty':
+       registro.RegisterForm.get('telefone').errors && (registro.RegisterForm.get('telefone').dirty || registro.RegisterForm.get('telefone').touched)}">
+            <div class="p-1"
+                 *ngIf="registro.RegisterForm.get('telefone').errors && (registro.RegisterForm.get('telefone').dirty || registro.RegisterForm.get('telefone').touched)">
+              <small id="telefone" class="p-error block">E obrigatório informar o telefone.</small>
             </div>
           </div>
           <div class="py-2">
