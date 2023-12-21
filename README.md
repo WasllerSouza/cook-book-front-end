@@ -1,7 +1,7 @@
 ![maintained-shield]
 ![Stargazers][stars-shield]
-Wasller Souza: [![LinkedIn][linkedin-shield]][linkedin-url-wasller]
-Weuller Souza: [![LinkedIn][linkedin-shield]][linkedin-url-weuller]
+[![LinkedIn][linkedin-shield-wasller]][linkedin-url-wasller]
+[![LinkedIn][linkedin-shield-weuller]][linkedin-url-weuller]
 
 <details open="open">
   <summary>Conteudo</summary>
@@ -136,7 +136,9 @@ Sinta-se livre para usar este projeto para estudar e aprender. Você não tem pe
 
 [stars-shield]: https://img.shields.io/github/stars/welissonArley/Timerom.svg?style=for-the-badge&color=03146F
 
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-shield-wasller]: https://img.shields.io/badge/LinkedIn_wasller-00599E?style=for-the-badge&logo=Linkedin&logoColor=white
+
+[linkedin-shield-weuller]: https://img.shields.io/badge/LinkedIn_weuller-00599E?style=for-the-badge&logo=Linkedin&logoColor=white
 
 <!-- Urls -->
 [linkedin-url-wasller]: https://www.linkedin.com/in/wasller-souza-4288ba18a/
